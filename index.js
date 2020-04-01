@@ -11,17 +11,13 @@ server.get('/projects', (req, res) => {
 server.post('/projects', (req, res) => {
     const { project } = req.body;
     projects.push(project);
-
     return res.json(projects);
 })
 
 server.delete('/projects/:index', (req, res) => {
     const { index } = req.query;
-     
     projects.splice(index,1);
-
     return res.json(projects);
-
 })
 
 server.listen(3333);
