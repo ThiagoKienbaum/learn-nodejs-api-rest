@@ -67,11 +67,9 @@ server.put('/projects/:id', validateProjectID, (req, res) => {
     return res.json(req.projectFound);
 });
 
-    //Deletar projeto por ID
 server.delete('/projects/:id', validateProjectID, (req, res) => {
     var projectToDelete = projects.indexOf(req.projectFound)
-
-
+    projects.splice(projectToDelete, 1);
     return res.json(projects);
 });
 
