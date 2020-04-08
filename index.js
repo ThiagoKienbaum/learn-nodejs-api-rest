@@ -48,9 +48,12 @@ server.post('/projects', (req, res) => {
     return res.json(projects);
 });
 
-//Criar uma nova task
 server.post('/projects/:id/tasks', validateProjectID, (req, res) => {
-    req.projectFound.tasks.push(req.body.tasks);
+    if(req.projectFound.tasks) {
+        req.projectFound.tasks.push(req.body.tasks);
+    } else {
+        req.projectFound["tasks"] = [req.body.tasks];
+    }    
     return res.json(req.projectFound);    
 });
 
