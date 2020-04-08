@@ -31,7 +31,7 @@ function validateProjectID(req, res, next) {
     const { id } = req.params;
     const projectFound = projects.find(project => project.id == id);
     if(!projectFound) {
-        return res.status(400).json({ error: 'Project not found.'})
+        return res.status(404).json({ error: 'Project not found.'})
     }
     req.projectFound = projectFound
     req.id = id;
